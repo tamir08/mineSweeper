@@ -3,9 +3,10 @@ td{
    height: 20px;
    width: 20px;
    background-color: grey;
+   cursor: pointer;
 }
 /* tbody: {
    context menu on right click: none,
 } */
 
-.js-noMenu { border-radius: 50%}
+.clicked { border-radius: 50%}

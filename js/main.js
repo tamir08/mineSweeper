@@ -110,7 +110,7 @@ function renderBoard(board) {
             }
          }
 
-         strHTML += `<td class="cell-${i}-${j}" onclick="cellClicked(this,${i},${j})" oncontextmenu="cellMarked(event, this,${i},${j})">${cellContent}</td>`;
+         strHTML += getTdHTML(cellContent, i, j);
       }
       strHTML += '</tr>'
    }
@@ -121,14 +121,21 @@ function renderBoard(board) {
 }
 
 function renderCell(elCell, i, j) {
-   var cellContent = gBoard[i][j].isMarked ? MARK : gBoard[i][j].minesAroundCount;
-   var strHTML = `<td class="cell-${i}-${j}" onclick="cellClicked(this,${i},${j})" oncontextmenu="cellMarked(event, this,${i},${j})">${cellContent}</td>`;
-   elCell.innerHTML = strHTML;
-}   
 
+   if (gBoard[i][j].isMarked) var cellContent = MARK;
+
+   else var cellContent= (gBoard[i][j].isShown)? +gBoard[i][j].minesAroundCount:'';
+
+   elCell.innerHTML = getTdHTML(cellContent, i, j);
+}
+
+function getTdHTML(value, i, j) {
+   return `<td class="cell-${i}-${j}" onclick="cellClicked(this,${i},${j})" oncontextmenu="cellMarked(event, this,${i},${j})">${value}</td>`;
+
+}
 function cellMarked(ev, elCell, i, j) {
    ev.preventDefault();
-   gBoard[i][j].isMarked= gBoard[i][j].isMarked? false:true;
+   gBoard[i][j].isMarked = gBoard[i][j].isMarked ? false : true;
    console.log('MARK elCell, i, j', gBoard[i][j])
    renderCell(elCell, i, j);
 }
@@ -139,8 +146,10 @@ function expandShown(board, elCell, i, j) { console.log('expand') }
 
 function cellClicked(elCell, i, j) {
    console.log(elCell, i, j)
+   
    if (gBoard[i][j].isMine) {
       endGame()
+   
    } else {
 
       if (gBoard[i][j].minesAroundCount > 0) {
@@ -149,13 +158,9 @@ function cellClicked(elCell, i, j) {
          renderCell(elCell, i, j)
       } else {
          expandShown(gBoard, elCell, i, j)
-      }   
-
-
-   }   
-
-
-}   
+      }
+   }
+}
 
 
 
