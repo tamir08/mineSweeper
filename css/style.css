@@ -1,0 +1,11 @@
+td{
+   border: 1px solid black;
+   height: 20px;
+   width: 20px;
+   background-color: grey;
+}
+/* tbody: {
+   context menu on right click: none,
+} */
+
+.js-noMenu { border-radius: 50%}
