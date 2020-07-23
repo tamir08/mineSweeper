@@ -19,6 +19,10 @@ body {
    margin: 0 auto;
 
 }
+.chooseLevel input {
+   
+   cursor: pointer;
+}
 
 .msgBox {
    height: 50px;
@@ -34,6 +38,13 @@ body {
 } 
 
 .row {
+   
+   max-width: 600px;
+   margin: 10px auto;
+}
+
+.row2 {
+   font-size: x-large;
    max-width: 600px;
    margin: 10px auto;
 }
@@ -42,21 +53,26 @@ body {
    display: inline-block;
    width: 30%;
    height: 20px;
+   cursor: pointer;
 }
 .smily {
+   font-size: xx-large;
    display:  inline-block;
    width: 30px;
    height: 20px;
    padding: 10px;
+   cursor: pointer;
 }
 
 .safeClicks {
+   font-size: large;
    display:  inline-block;
    width: 25%;
    height: 20px;
    padding: 10px;
    border-radius: 20%;
    background-color: wheat;
+   cursor: pointer;
    
 }
 

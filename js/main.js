@@ -297,9 +297,9 @@ function cellClicked(elCell, i, j) {
       elCell.innerText = MINE;
       elCell.classList.add('clicked')
       gSmily.innerHTML = '<span>🤧</span>';
-      setTimeout(function () { 
+      setTimeout(function () {
          if (gGame.isOn) restartSmily()
-          }, 1500)
+      }, 1500)
       checkGameOver()
       return;
    }
@@ -402,18 +402,18 @@ function revealMines() {
 
 
 function startTimer() {
-   
+
    var elTimer = document.querySelector('.timer span')
    var elMiliSEcs = document.querySelector('.miliSecs')
    var timerTime;
    gTimerInterval = setInterval(function () {
-      
+
       timerTime = Date.now() - gGame.startTime;
-      var displyTime=new Date(timerTime)
-      
-      var displayStr='<b>'+displyTime.getMinutes()+':'+displyTime.getSeconds()+'</b>';
+      var displyTime = new Date(timerTime)
+
+      var displayStr = '<b>' + displyTime.getMinutes() + ' : ' + displyTime.getSeconds() + '</b>';
       elTimer.innerHTML = displayStr;
-      elMiliSEcs.innerText='.'+((timerTime%1000).toLocaleString());
+      elMiliSEcs.innerText = '.' + ((timerTime % 1000).toLocaleString());
    }, 173);
 }
 
@@ -432,7 +432,7 @@ function playSound(efect) {
 
 
 function restartSmily() {
-   if (gGame.isOn)
+
    gSmily.innerHTML = '<span >😷</span>';
 }
 
@@ -441,7 +441,7 @@ function showHint(idxI, idxJ) {
    gGame.hints--;
    var elhints = document.querySelector('.hints span');
    elhints.innerText = '';
-
+   elhints.style.border = 'none'
    for (var hintIdx = 0; hintIdx < gGame.hints; hintIdx++) {
       elhints.innerText += HINT;
    }
@@ -497,10 +497,11 @@ function showHint(idxI, idxJ) {
 }
 
 
-function setHintMode() {
+function setHintMode(elHint) {
 
    if (gGame.isOn) {
       gGame.onHintMode = !gGame.onHintMode;
+      elHint.style.border = gGame.onHintMode ? 'yellow 1px solid' : 'none'
 
    } else eror();
 }
@@ -538,8 +539,8 @@ function showSafe() {
    elCell.style.backgroundColor = 'blue';
 
    setTimeout(function () {
-      
-      elCell.style.backgroundColor = (gBoard[i][j].isShown)? 'rgba(197, 197, 238, 0.856)':'rgb(224, 221, 204)';
+
+      elCell.style.backgroundColor = (gBoard[i][j].isShown) ? 'rgba(197, 197, 238, 0.856)' : 'rgb(224, 221, 204)';
    }, 2000)
 
 }
