@@ -452,7 +452,6 @@ function showHint(idxI, idxJ) {
    renderHints()
 
 
-
    for (var i = idxI - 1; i <= idxI + 1; i++) {
 
       if (i < 0 || i >= gBoard.length) continue;
@@ -502,14 +501,33 @@ function showHint(idxI, idxJ) {
 }
 
 
+var lastElHint;
 function setHintMode(elHint) {
 
-   if (gGame.isOn) {
+   if (!gGame.isOn)
+      return eror();
+
+
+   if (!gGame.onHintMode) {
+
+      gGame.onHintMode = true;
+      elHint.style.border = 'yellow 1px solid';
+      lastElHint = elHint;
+
+
+   } else if (lastElHint === elHint) {
       gGame.onHintMode = !gGame.onHintMode;
       elHint.style.border = gGame.onHintMode ? 'yellow 1px solid' : 'none'
 
-   } else eror();
+
+   } else {
+      elHint.style.border = 'yellow 1px solid';
+      lastElHint.style.border = 'none'
+      lastElHint = elHint;
+   }
 }
+
+
 
 
 function showSafe() {
@@ -543,8 +561,8 @@ function showSafe() {
    elCell.style.border = 'solid 2px blue';
 
    setTimeout(function () {
-      
-         elCell.style.border = 'none';
+
+      elCell.style.border = 'none';
    }, 2000)
 
 }
