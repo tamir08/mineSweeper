@@ -27,7 +27,7 @@ function initGame() {
    document.querySelector('h2').innerText = 'Click a cell to reveal it, avoid Corona virus';
    document.querySelector('.markCount span').innerText = `${gGame.markedCount}/${gLevel.MINES}`;
    document.querySelector('.cellCount span').innerText = `0`;
-   document.querySelector('.hints span').innerText = HINT + HINT + HINT;
+   renderHints();
    document.querySelector('.safeClicks span').innerText = 3;
    restartSmily();
 
@@ -436,15 +436,20 @@ function restartSmily() {
    gSmily.innerHTML = '<span >😷</span>';
 }
 
+function renderHints() {
+
+   var elhints = document.querySelector('.hints');
+   elhints.innerHTML = '';
+   for (var hintIdx = 0; hintIdx < gGame.hints; hintIdx++) {
+      elhints.innerHTML += `<span onclick="setHintMode(this)">${HINT}</span>`;
+   }
+}
+
+
 function showHint(idxI, idxJ) {
 
    gGame.hints--;
-   var elhints = document.querySelector('.hints span');
-   elhints.innerText = '';
-   elhints.style.border = 'none'
-   for (var hintIdx = 0; hintIdx < gGame.hints; hintIdx++) {
-      elhints.innerText += HINT;
-   }
+   renderHints()
 
 
 
@@ -518,15 +523,13 @@ function showSafe() {
 
 
    var possibleCells = [];
-   var count = 0;
 
    for (var i = 0; i < gLevel.SIZE; i++) {
 
       for (var j = 0; j < gLevel.SIZE; j++) {
 
          if (!gBoard[i][j].isMine && !gBoard[i][j].isShown) {
-            possibleCells.push({ i: i, j: j })
-            count++
+            possibleCells.push({ i, j })
          }
       }
    }
@@ -535,12 +538,13 @@ function showSafe() {
    var rndLocation = possibleCells[rndIdx];
    var i = rndLocation.i;
    var j = rndLocation.j;
+
    var elCell = document.querySelector(`.cell-${i}-${j}`)
-   elCell.style.backgroundColor = 'blue';
+   elCell.style.border = 'solid 2px blue';
 
    setTimeout(function () {
-
-      elCell.style.backgroundColor = (gBoard[i][j].isShown) ? 'rgba(197, 197, 238, 0.856)' : 'rgb(224, 221, 204)';
+      
+         elCell.style.border = 'none';
    }, 2000)
 
 }
