@@ -297,7 +297,9 @@ function cellClicked(elCell, i, j) {
       elCell.innerText = MINE;
       elCell.classList.add('clicked')
       gSmily.innerHTML = '<span>🤧</span>';
-      setTimeout(function () { restartSmily() }, 1500)
+      setTimeout(function () { 
+         if (gGame.isOn) restartSmily()
+          }, 1500)
       checkGameOver()
       return;
    }
@@ -330,7 +332,7 @@ function checkGameOver() {
       elLives.innerText += LIFE;
    }
    if (gGame.lives <= 0) {
-      gSmily.innerHTML = '<span class="down">😷</span>';
+      gSmily.innerHTML = '<span class="down">💀</span>';
       endGame(false);
       return
 
@@ -430,6 +432,7 @@ function playSound(efect) {
 
 
 function restartSmily() {
+   if (gGame.isOn)
    gSmily.innerHTML = '<span >😷</span>';
 }
 
