@@ -11,38 +11,37 @@
 <body onload="initGame()">
    <div class="box">
       <h1 class="mainHeader">Put Corona Into Quarantine </h1>
-      <div class="chooseLevel">
-         <b>Choose level to start:</b> </br>
-         Easy <input class="level" type="range" onclick="getLevel()" value="number" min="1" max="7"> Extrime
-      </div>
       <div class="msgBox">
-         <h2 class="msg"></h2></br>
-         <div class="lives" ><span></span></div>
+         <h2 class="msg"></h2>
       </div>
       <div>
+         <div class="chooseLevel">
+            Easy <input class="level" type="range" onclick="getLevel()" value="number" min="1" max="7"> Extrime
+         </div>
          <table>
             <thead>
-               <div>
+               <div class="row">
                   <div class="cellCount">Revealed cells:</br><span>00</span></div>
                   <div class="timer">Time:</br><span>00:00</span></div>
                   <div class="markCount">Marked microbes:</br><span>00</span></div>
                   
                   
                </div>
-               <div>
+               <div class="row">
                   
-                  <div class="hints">hints:</br><span onclick="setHintMode()"></span></div>
-                  <div class="smily" onclick="getLevel()"></div>
-                  <div class="clues">clues:</br><span>00</span></div>
-
+                  <div class="hints"><span onclick="setHintMode()"></span></div>
+                  <div class="smily" onclick="initGame()"></div>
+                  <div class="lives"><span>00</span></div>
+                  <div class="safeClicks" onclick="showSafe(this)"><b>Safe Click: </b><span></span></div>
+                  
                </div>
-
+               
             </thead>
-            <tbody class="board" oncontextmenu="noMenu(event)">
+            <tbody class="board" >
 
             </tbody>
          </table>
-         div
+         
       </div>
    </div>
    <script src="js/util.js"></script>

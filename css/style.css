@@ -21,24 +21,22 @@ body {
 }
 
 .msgBox {
-   height: 70px;
+   height: 50px;
    text-overflow: clip;
 }
 
 .msg {
-   height: 10px;
+   
    display:  inline-block;
    margin-block-start: 0em;
     margin-block-end: 0em;
 
 } 
 
-.lives{
-   display:  inline-block;
-   
-
+.row {
+   max-width: 600px;
+   margin: 10px auto;
 }
-
 
 .hints {
    display: inline-block;
@@ -51,20 +49,34 @@ body {
    height: 20px;
    padding: 10px;
 }
+
+.safeClicks {
+   display:  inline-block;
+   width: 25%;
+   height: 20px;
+   padding: 10px;
+   border-radius: 20%;
+   background-color: wheat;
+   
+}
+
+
+
 .down {
    display:  inline-block;
    transform: rotate(180deg);
 }
-.clues{
+.lives {
    display:  inline-block;
    width: 30%;
    height: 20px;
 }
 .timer {
    display: inline-block;
-   width: 30%;
+   padding: 0 auto;
+   width: 85px;
    height: 100%;
-   /* background-color: whitesmoke; */
+   
 }
 .markCount{
    display:  inline-block;
@@ -92,14 +104,13 @@ td{
    width: 25px;
    background-color:   rgb(224, 221, 204);
    cursor: pointer;
-   border: ;
    box-shadow:  rgba(31, 31, 65, 0.856) 1px 1px 1px 1px;
 }
 
 .clicked { 
    
    box-shadow:   rgba(197, 197, 238, 0.856) 1px 1px 1px 1px;
-      background-color:  rgba(197, 197, 238, 0.856);
+   background-color:  rgba(197, 197, 238, 0.856);
    cursor: default;
 
 }
