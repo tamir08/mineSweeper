@@ -402,14 +402,16 @@ function revealMines() {
 function startTimer() {
    
    var elTimer = document.querySelector('.timer span')
+   var elMiliSEcs = document.querySelector('.miliSecs')
    var timerTime;
    gTimerInterval = setInterval(function () {
       
       timerTime = Date.now() - gGame.startTime;
       var displyTime=new Date(timerTime)
       
-      var displayStr=displyTime.getMinutes()+' : '+displyTime.getSeconds()+' .'+((timerTime%1000).toLocaleString());
-      elTimer.innerText = displayStr;
+      var displayStr='<b>'+displyTime.getMinutes()+':'+displyTime.getSeconds()+'</b>';
+      elTimer.innerHTML = displayStr;
+      elMiliSEcs.innerText='.'+((timerTime%1000).toLocaleString());
    }, 173);
 }
 
@@ -533,8 +535,9 @@ function showSafe() {
    elCell.style.backgroundColor = 'blue';
 
    setTimeout(function () {
-      elCell.style.backgroundColor = 'rgb(224, 221, 204)';
-   }, 3000)
+      
+      elCell.style.backgroundColor = (gBoard[i][j].isShown)? 'rgba(197, 197, 238, 0.856)':'rgb(224, 221, 204)';
+   }, 2000)
 
 }
 

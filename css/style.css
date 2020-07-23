@@ -73,10 +73,23 @@ body {
 }
 .timer {
    display: inline-block;
-   padding: 0 auto;
-   width: 85px;
+   width: 30%;
    height: 100%;
    
+}
+
+.timer span{
+   display: inline-block;
+   left: 0px;
+   text-align: right;
+   width: 40px;
+}
+
+.miliSecs{
+   display: inline-block;
+   text-align: left;
+   right: 0px;
+   width: 20px;
 }
 .markCount{
    display:  inline-block;
